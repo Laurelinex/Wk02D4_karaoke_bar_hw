@@ -8,8 +8,13 @@ class Room:
         self.capacity = capacity
     
     def check_in_guest(self, guest):
-        self.guests.append(guest)
-    
+        # extension
+        if len(self.guests) <= self.capacity:
+            self.guests.append(guest)
+            return "Welcome! Enjoy your time."
+        else:
+            return f"Sorry, this room cannot accomodate more than {self.capacity} guests. Try another room."
+            
     def check_out_guest(self, guest):
         self.guests.remove(guest)
     

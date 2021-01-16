@@ -46,3 +46,16 @@ class TestRoom(unittest.TestCase):
         self.room.check_in_guest(self.guest)
         self.room.check_occupancy()
         self.assertEqual(2, len(self.room.guests))
+
+    def test_room_can_turn_down_guest(self):
+        self.room.check_in_guest(self.guest)
+        self.room.check_in_guest(self.guest)
+        self.room.check_in_guest(self.guest)
+        self.room.check_in_guest(self.guest)
+        self.room.check_in_guest(self.guest)
+        self.room.check_in_guest(self.guest)
+        self.assertEqual(f"Sorry, this room cannot accomodate more than {self.room.capacity} guests. Try another room.", self.room.check_in_guest(self.guest))
+    
+    def test_room_can_welcome_guest(self):
+        self.room.check_in_guest(self.guest)
+        self.assertEqual("Welcome! Enjoy your time.", self.room.check_in_guest(self.guest))
