@@ -36,3 +36,5 @@ class TestRoom(unittest.TestCase):
         self.room.add_song_to_playlist(self.song)
         self.room.remove_song_from_playlist(self.song)
         self.assertEqual(0, len(self.room.playlist))
+    
+    
