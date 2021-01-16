@@ -6,7 +6,7 @@ from classes.song import Song
 class TestRoom(unittest.TestCase):
 
     def setUp(self):
-        self.room = Room(1)
+        self.room = Room(1, 5)
         self.guest = Guest("Carole Singer")
         self.song = Song("You Can't Stop the Beat", "Hairspray")
     
@@ -37,4 +37,12 @@ class TestRoom(unittest.TestCase):
         self.room.remove_song_from_playlist(self.song)
         self.assertEqual(0, len(self.room.playlist))
     
+    def test_room_check_capacity(self):
+        self.room.check_capacity()
+        self.assertEqual(5, self.room.capacity)
     
+    def test_room_can_check_number_guests_checked_in(self):
+        self.room.check_in_guest(self.guest)
+        self.room.check_in_guest(self.guest)
+        self.room.check_occupancy()
+        self.assertEqual(2, len(self.room.guests))
