@@ -7,7 +7,7 @@ class TestRoom(unittest.TestCase):
 
     def setUp(self):
         self.room = Room(1, 5)
-        self.guest = Guest("Carole Singer")
+        self.guest = Guest("Carole Singer", 30.00)
         self.song = Song("You Can't Stop the Beat", "Hairspray")
     
     def test_room_has_room_number(self):
